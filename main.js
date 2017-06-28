@@ -23,14 +23,14 @@ class App extends React.Component {
 
   render() {
     if (!this.state.loaded) {
-      return <Expo.Components.AppLoading />;
+      return <Expo.AppLoading />;
     }
 
     return (
       <View style={styles.container}>
         <View style={styles.background}>
           <Animated.View style={[styles.backgroundViewWrapper, {opacity: this.state.backgroundOpacity}]}>
-            <Expo.Components.Video
+            <Expo.Video
               source={videoSource}
               style={{width: Dimensions.get('window').width, height: Dimensions.get('window').height}}
               resizeMode="cover"
