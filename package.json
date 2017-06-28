@@ -6,9 +6,9 @@
   "private": true,
   "main": "main.js",
   "dependencies": {
-    "exponent": "~13.1.0",
+    "exponent": "~14.0.0",
     "@exponent/vector-icons": "~2.0.3",
     "react": "~15.4.0",
-    "react-native": "https://github.com/exponent/react-native/archive/sdk-13.0.3.tar.gz"
+    "react-native": "https://github.com/exponent/react-native/archive/sdk-14.0.0.tar.gz"
   }
 }
