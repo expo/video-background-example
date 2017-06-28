@@ -2,7 +2,7 @@
   "name": "video-background",
   "description": "People like to make videos as backgrounds for authentication screens and other things, this shows how.",
   "slug": "video-background",
-  "sdkVersion": "11.0.0",
+  "sdkVersion": "12.0.0",
   "version": "1.0.0",
   "orientation": "portrait",
   "primaryColor": "#cccccc",
