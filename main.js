@@ -1,4 +1,4 @@
-import Exponent from 'exponent';
+import Expo from 'expo';
 import React from 'react';
 import {
   Animated,
@@ -17,20 +17,20 @@ class App extends React.Component {
   }
 
   async componentWillMount() {
-    await Exponent.Asset.fromModule(videoSource).downloadAsync();
+    await Expo.Asset.fromModule(videoSource).downloadAsync();
     this.setState({loaded: true});
   }
 
   render() {
     if (!this.state.loaded) {
-      return <Exponent.Components.AppLoading />;
+      return <Expo.Components.AppLoading />;
     }
 
     return (
       <View style={styles.container}>
         <View style={styles.background}>
           <Animated.View style={[styles.backgroundViewWrapper, {opacity: this.state.backgroundOpacity}]}>
-            <Exponent.Components.Video
+            <Expo.Components.Video
               source={videoSource}
               style={{width: Dimensions.get('window').width, height: Dimensions.get('window').height}}
               resizeMode="cover"
@@ -82,4 +82,4 @@ const styles = StyleSheet.create({
   },
 });
 
-Exponent.registerRootComponent(App);
+Expo.registerRootComponent(App);
