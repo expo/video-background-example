@@ -31,12 +31,10 @@ class App extends React.Component {
         <View style={styles.background}>
           <Animated.View style={[styles.backgroundViewWrapper, {opacity: this.state.backgroundOpacity}]}>
             <Expo.Video
-              source={videoSource}
               style={{width: Dimensions.get('window').width, height: Dimensions.get('window').height}}
               resizeMode="cover"
-              repeat={true}
-              mute={true}
-              onLoad={() => this._fadeInVideo()}
+              ref={this._handleVideoRef}
+              onLoad={this._fadeInVideo}
             />
           </Animated.View>
         </View>
@@ -47,6 +45,15 @@ class App extends React.Component {
         </View>
       </View>
     );
+  }
+
+  _handleVideoRef(videoRef) {
+    videoRef.loadAsync(videoSource, {
+      shouldPlay: true,
+      isLooping: true,
+    });
+
+    this.videoRef = videoRef;
   }
 
   _fadeInVideo = () => {
