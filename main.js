@@ -1,4 +1,4 @@
-import Exponent from 'exponent';
+import Expo from 'expo';
 import React from 'react';
 import {
   Animated,
@@ -17,26 +17,24 @@ class App extends React.Component {
   }
 
   async componentWillMount() {
-    await Exponent.Asset.fromModule(videoSource).downloadAsync();
+    await Expo.Asset.fromModule(videoSource).downloadAsync();
     this.setState({loaded: true});
   }
 
   render() {
     if (!this.state.loaded) {
-      return <Exponent.Components.AppLoading />;
+      return <Expo.AppLoading />;
     }
 
     return (
       <View style={styles.container}>
         <View style={styles.background}>
           <Animated.View style={[styles.backgroundViewWrapper, {opacity: this.state.backgroundOpacity}]}>
-            <Exponent.Components.Video
-              source={videoSource}
+            <Expo.Video
               style={{width: Dimensions.get('window').width, height: Dimensions.get('window').height}}
               resizeMode="cover"
-              repeat={true}
-              mute={true}
-              onLoad={() => this._fadeInVideo()}
+              ref={this._handleVideoRef}
+              onLoad={this._fadeInVideo}
             />
           </Animated.View>
         </View>
@@ -47,6 +45,15 @@ class App extends React.Component {
         </View>
       </View>
     );
+  }
+
+  _handleVideoRef(videoRef) {
+    videoRef.loadAsync(videoSource, {
+      shouldPlay: true,
+      isLooping: true,
+    });
+
+    this.videoRef = videoRef;
   }
 
   _fadeInVideo = () => {
@@ -82,4 +89,4 @@ const styles = StyleSheet.create({
   },
 });
 
-Exponent.registerRootComponent(App);
+Expo.registerRootComponent(App);
