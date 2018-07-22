@@ -1,0 +1,27 @@
+{
+  "expo": {
+    "name": "video-background",
+    "description": "People like to make videos as backgrounds for authentication screens and other things, this shows how.",
+    "slug": "video-background",
+    "sdkVersion": "28.0.0",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "primaryColor": "#000000",
+    "privacy": "unlisted",
+    "icon": "./assets/images/icon.png",
+    "splash": {
+      "backgroundColor": "#000000",
+      "image": "./assets/loading/splash.png",
+      "resizeMode": "cover"
+    },
+    "packagerOpts": {
+      "assetExts": [
+        "ttf",
+        "mp4"
+      ]
+    },
+    "ios": {
+      "supportsTablet": true
+    }
+  }
+}
