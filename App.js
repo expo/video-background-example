@@ -1,11 +1,13 @@
-import React, { Component } from 'react';
-import { Animated, Dimensions, StyleSheet, Text, View } from 'react-native';
-import { AppLoading, Asset, Video } from 'expo';
+import React from "react";
+import { Animated, Dimensions, StyleSheet, Text, View } from "react-native";
+import { AppLoading, Asset, Video } from "expo";
 
 // set path to local video
-const videoSource = require('./assets/video/lights.mp4');
+const videoSource = require("./assets/video/lights.mp4");
 
-export default class App extends Component {
+const { height, width } = Dimensions.get("window");
+
+export default class App extends React.Component {
   constructor(props) {
     super(props);
 
@@ -13,8 +15,8 @@ export default class App extends Component {
     this.state = {
       backgroundOpacity: new Animated.Value(0),
       loaded: false,
-      videoHeight: Dimensions.get('window').height,
-      videoWidth: Dimensions.get('window').width,
+      videoHeight: height,
+      videoWidth: width
     };
   }
 
@@ -30,29 +32,33 @@ export default class App extends Component {
 
   // this is called from the video::onLoad()
   fadeInVideo = () => {
+    const { backgroundOpacity } = this.state;
     setTimeout(() => {
-      // animate spring :: https://facebook.github.io/react-native/docs/animated#spring
-      Animated.spring(
-        this.state.backgroundOpacity,
-        {
-          toValue: 1
-        }
-      ).start();
+      // animate spring
+      // https://facebook.github.io/react-native/docs/animated#spring
+      Animated.spring(backgroundOpacity, {
+        toValue: 1
+      }).start();
     }, 400);
-  }
+  };
 
   render() {
+    const { backgroundOpacity, loaded, videoHeight, videoWidth } = this.state;
+
     // if application is not yet loaded
-    if (!this.state.loaded) {
-      return (
-        <AppLoading />
-      );
+    if (!loaded) {
+      return <AppLoading />;
     }
 
     return (
       <View style={styles.container}>
         <View style={styles.background}>
-          <Animated.View style={[styles.backgroundViewWrapper, {opacity: this.state.backgroundOpacity}]}>
+          <Animated.View
+            style={[
+              styles.backgroundViewWrapper,
+              { opacity: backgroundOpacity }
+            ]}
+          >
             <Video
               isLooping
               isMuted={false}
@@ -60,16 +66,14 @@ export default class App extends Component {
               resizeMode="cover"
               shouldPlay
               source={videoSource}
-              style={{
-                height: this.state.videoHeight,
-                width: this.state.videoWidth
-              }}
+              style={{ height: videoHeight, width: videoWidth }}
             />
           </Animated.View>
         </View>
         <View style={styles.overlay}>
           <Text style={styles.title}>
-            This is where you might put a button or some other text on top of the video
+            This is where you might put a button or some other text on top of
+            the video
           </Text>
         </View>
       </View>
@@ -79,27 +83,27 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   container: {
+    alignItems: "center",
+    backgroundColor: "transparent",
     flex: 1,
-    backgroundColor: 'transparent',
-    alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: "center"
   },
   background: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: '#000',
+    backgroundColor: "#000"
   },
   backgroundViewWrapper: {
-    ...StyleSheet.absoluteFillObject,
+    ...StyleSheet.absoluteFillObject
   },
   overlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(0,0,0,0.4)',
+    backgroundColor: "rgba(0,0,0,0.4)"
   },
   title: {
+    color: "#fff",
     fontSize: 20,
-    color: '#fff',
-    textAlign: 'center',
-    paddingHorizontal: 20,
     marginTop: 90,
-  },
+    paddingHorizontal: 20,
+    textAlign: "center"
+  }
 });
