@@ -1,11 +1,11 @@
-import React from "react";
-import { Animated, Dimensions, StyleSheet, Text, View } from "react-native";
-import { AppLoading, Asset, Video } from "expo";
+import React from 'react';
+import { Animated, Dimensions, StyleSheet, Text, View } from 'react-native';
+import { AppLoading, Asset, Video } from 'expo';
 
 // set path to local video
-const videoSource = require("./assets/video/lights.mp4");
+const videoSource = require('./assets/video/lights.mp4');
 
-const { height, width } = Dimensions.get("window");
+const { height, width } = Dimensions.get('window');
 
 export default class App extends React.Component {
   constructor(props) {
@@ -83,27 +83,27 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: "center",
-    backgroundColor: "transparent",
+    alignItems: 'center',
+    backgroundColor: 'transparent',
     flex: 1,
-    justifyContent: "center"
+    justifyContent: 'center'
   },
   background: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: "#000"
+    backgroundColor: '#000'
   },
   backgroundViewWrapper: {
     ...StyleSheet.absoluteFillObject
   },
   overlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: "rgba(0,0,0,0.4)"
+    backgroundColor: 'rgba(0,0,0,0.4)'
   },
   title: {
-    color: "#fff",
+    color: '#fff',
     fontSize: 20,
     marginTop: 90,
     paddingHorizontal: 20,
-    textAlign: "center"
+    textAlign: 'center'
   }
 });
