@@ -1,13 +1,22 @@
 {
-  "name": "video-background",
-  "version": "0.0.0",
-  "description": "Hello Exponent!",
-  "author": "exponent.team@gmail.com",
+  "name": "expo-video-background",
+  "version": "1.0.0",
+  "description": "example of a loop video background",
+  "author": "expo",
+  "keywords": [
+    "expo",
+    "react-native",
+    "video",
+    "video-background"
+  ],
   "private": true,
   "main": "node_modules/expo/AppEntry.js",
   "dependencies": {
-    "expo": "^29.0.0",
-    "react": "16.3.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-29.0.0.tar.gz"
+    "expo": "^32.0.0",
+    "react": "16.5.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz"
+  },
+  "devDependencies": {
+    "babel-preset-expo": "^5.0.0"
   }
 }
