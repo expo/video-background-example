@@ -1,13 +1,5 @@
-# expo-video-background
+# Video Background Example
 
-Video backgrounds are common in mobile apps. This shows you how to do it with expo.
-
-#### Install & Build
-
-Install: `yarn install`
-
-[Expo CLI](https://docs.expo.io/versions/latest/workflow/expo-cli/): `npm install -g expo-cli` (if not already installed globally on your machine)
-
-Run Project Locally: `expo start`
+**This repo has moved to [examples/with-video-background](https://github.com/expo/examples/tree/master/with-video-background)**
 
 **Example video from:** http://www.wedistill.io
