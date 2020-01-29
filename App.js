@@ -20,14 +20,9 @@ export default class App extends React.Component {
     };
   }
 
-  async componentWillMount() {
+  async _cacheVideoAsync() {
     // wait for video to download
     await Asset.fromModule(videoSource).downloadAsync();
-
-    // once loaded, update state
-    this.setState({
-      loaded: true
-    });
   }
 
   // this is called from the video::onLoad()
@@ -47,7 +42,12 @@ export default class App extends React.Component {
 
     // if application is not yet loaded
     if (!loaded) {
-      return <AppLoading />;
+      return <AppLoading 
+        startAsync={this._cacheVideoAsync}
+        // once loaded, update state
+        onFinish={() => this.setState({ loaded: true })}
+        onError={console.warn}
+      />;
     }
 
     return (
